@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { Gender, Patient } from "../../types"
 import { parseString } from "../../parsers"
 import { getByID } from "../../services/patients"
+import { EntryAccordion } from "./EntryAccordion"
 
 
 
@@ -53,8 +54,18 @@ const singlePatientPage = () => {
 
     return (
         <div>
-            <h1>{welcome}</h1>
-            {displayGender(patient.gender)}
+            <div>
+                <h4>Name: {patient.name}</h4>
+                <li>
+                    gender: {patient.gender}
+                    {displayGender(patient.gender)}
+                </li>
+                <li>ssn: {patient.ssn}</li>
+                <div>
+                    <EntryAccordion entry={{comment: "wow"}}/>
+                </div>
+            </div>
+            
         </div>
 
         )
