@@ -21,10 +21,10 @@ export const EntryAccordion = ({entry}: Props) => {
             aria-controls="panel1-content"
             id="panel1-header"
             >
-            Accordion 1
+            {entry.date} {entry.type}
             </AccordionSummary>
             <AccordionDetails>
-            {entry.comment}
+            {entry.description}
             </AccordionDetails>
         </Accordion>
     </div>

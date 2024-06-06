@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { Gender, Patient } from "../../types"
+import { Entry, Gender, Patient } from "../../types"
 import { parseString } from "../../parsers"
 import { getByID } from "../../services/patients"
 import { EntryAccordion } from "./EntryAccordion"
@@ -62,7 +62,10 @@ const singlePatientPage = () => {
                 </li>
                 <li>ssn: {patient.ssn}</li>
                 <div>
-                    <EntryAccordion entry={{comment: "wow"}}/>
+                    {Object.values(patient.entries).map((e: Entry)=> (
+                        <EntryAccordion key={e.id} entry={e}/>
+
+                    ))}
                 </div>
             </div>
             
