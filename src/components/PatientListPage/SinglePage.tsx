@@ -4,6 +4,8 @@ import { Entry, Gender, Patient } from "../../types"
 import { parseString } from "../../parsers"
 import { getByID } from "../../services/patients"
 import { EntryAccordion } from "./EntryAccordion"
+import MaleIcon from '@mui/icons-material/Male';
+import FemaleIcon from '@mui/icons-material/Female';
 
 
 
@@ -35,7 +37,10 @@ const singlePatientPage = () => {
         }
         return(
             <div>
-                {gendernum}
+                {(gendernum === 1) && 
+                <FemaleIcon fontSize="large"/>}
+                {(gendernum === 2) && 
+                <MaleIcon fontSize="large"/>}
             </div>
         )
     }
