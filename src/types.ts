@@ -4,11 +4,6 @@ export interface Diagnosis {
   latin?: string;
 }
 
-interface TimePeriod {
-  startDate: string;
-  endDate: string;
-}
-
 export enum Gender {
   Male = "male",
   Female = "female",
@@ -30,19 +25,22 @@ interface BaseEntry {
   diagnosisCodes?: string[];
 }
 
-interface HealthCheckEntry extends BaseEntry {
+export interface HealthCheckEntry extends BaseEntry {
   type: "HealthCheck";
   healthCheckRating: HealthCheckRating;
 }
 
-interface OccupationalHealthcareEntry extends BaseEntry {
+export interface OccupationalHealthcareEntry extends BaseEntry {
   type: 'OccupationalHealthcare';
   employerName: string;
-  sickLeave: TimePeriod;
+  sickLeave: {
+    startDate: string;
+    endDate: string;
+  }
 
 } 
 
-interface HospitalEntry extends BaseEntry {
+export interface HospitalEntry extends BaseEntry {
   type: 'Hospital';
   discharge: {
     date: string;
@@ -70,3 +68,7 @@ export interface Patient {
 export type NonSensitivePatient = Omit<Patient, 'ssn' | 'entries'>;
 
 export type PatientFormValues = Omit<Patient, "id" | "entries">;
+
+type UnionOmit<T, K extends string | number | symbol> = T extends unknown ? Omit<T, K> : never;
+// Define Entry without the 'id' property
+export type EntryWithoutId = UnionOmit<Entry, 'id'>;

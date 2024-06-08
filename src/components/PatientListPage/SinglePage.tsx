@@ -16,12 +16,17 @@ const singlePatientPage = () => {
     const [welcome, setWelcome] = useState<string>('')
     const [patient, setPatient] = useState<Patient>()
     useEffect(() => {
+        get_patient_info()
+    },[])
+
+
+    const get_patient_info = () => {
         setWelcome("loading")
         const id = parseString(newId)
         getByID(id)
         .then(res => {setPatient(res); setWelcome(""); console.log("new get", res.name)} )
         .catch(e=> {console.log("error:", e); setWelcome("Error loading patient"); setPatient(undefined)})
-    },[])
+    }
 
 
     const displayGender = (g: Gender) => {
@@ -75,7 +80,7 @@ const singlePatientPage = () => {
                 </div>
                 <div>
                     <h3>Add new entry</h3>
-                    <NewEntryForm/>
+                    <NewEntryForm patientID={patient.id} onSubmit={get_patient_info}/>
                 </div>
             </div>
             
