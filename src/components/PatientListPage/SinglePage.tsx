@@ -56,7 +56,7 @@ const singlePatientPage = () => {
         
     }
 
-
+    console.log(patient)
     return (
         <div>
             <div>

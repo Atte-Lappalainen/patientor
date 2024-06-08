@@ -14,8 +14,8 @@ interface Props{
 export const EntryAccordion = ({entry}: Props) => {
     const [diagnoses, setDiagnoses] = useState<Diagnosis[]>([])
     useEffect(() => {
+        console.log(entry.diagnosisCodes)
         if (diagnoses.length === 0) {
-            
         
         entry.diagnosisCodes?.forEach(d => {
             getByCode(d)
