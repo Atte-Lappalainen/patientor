@@ -6,6 +6,7 @@ import { getByID } from "../../services/patients"
 import { EntryAccordion } from "./EntryAccordion"
 import MaleIcon from '@mui/icons-material/Male';
 import FemaleIcon from '@mui/icons-material/Female';
+import { NewEntryForm } from "./NewEntryForm"
 
 
 
@@ -71,6 +72,10 @@ const singlePatientPage = () => {
                         <EntryAccordion key={e.id} entry={e}/>
 
                     ))}
+                </div>
+                <div>
+                    <h3>Add new entry</h3>
+                    <NewEntryForm/>
                 </div>
             </div>
             
