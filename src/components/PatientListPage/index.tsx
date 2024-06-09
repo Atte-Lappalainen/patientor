@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { Box, Table, Button, TableHead, Typography, TableCell, TableRow, TableBody } from '@mui/material';
 import axios from 'axios';
-import {Link} from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 import { PatientFormValues, Patient } from "../../types";
 import AddPatientModal from "../AddPatientModal";
@@ -9,8 +9,6 @@ import AddPatientModal from "../AddPatientModal";
 import HealthRatingBar from "../HealthRatingBar";
 
 import patientService from "../../services/patients";
-
-import {Box, Table, Button, TableHead, Typography, TableCell, TableRow, TableBody } from '@mui/material';
 
 interface Props {
   patients : Patient[]
@@ -76,8 +74,10 @@ const PatientListPage = ({ patients, setPatients } : Props ) => {
               <TableCell>
                 <HealthRatingBar showText={false} rating={1} />
               </TableCell>
-              <TableCell >
-              <Button component={Link} to={`/patients/${patient.id}`} variant="contained" color="primary">Open patient page</Button>
+              <TableCell>
+              <Button component={Link} to={`/patients/${patient.id}`} variant="contained" color="primary">
+                Open patient info
+              </Button>
               </TableCell>
             </TableRow>
           ))}
